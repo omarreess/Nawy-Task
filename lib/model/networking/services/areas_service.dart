@@ -1,5 +1,5 @@
 import 'package:http/http.dart' as http;
-import 'package:nawy/networking/endpoints/endpoints_paths.dart';
+import 'package:nawy/model/networking/endpoints/endpoints_paths.dart';
 import 'shared/http_services.dart';
 
 /// Areas Service to be used by client
