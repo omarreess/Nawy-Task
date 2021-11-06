@@ -1,7 +1,7 @@
 import 'dart:convert';
-import 'package:nawy/networking/services/areas_service.dart';
-import 'package:nawy/networking/services/compounds_service.dart';
-import 'package:nawy/networking/services/prices_service.dart';
+import 'package:nawy/model/networking/services/areas_service.dart';
+import 'package:nawy/model/networking/services/compounds_service.dart';
+import 'package:nawy/model/networking/services/prices_service.dart';
 import 'package:nawy/networking/services/search_service.dart';
 
 /// Client Services to be used directly for networking requests as an Endpoint for client use
@@ -46,8 +46,8 @@ class Client {
   ///Search Client Service
   ///
   Future<Map<String, dynamic>> searchClientService({
-    required String minPrice,
-    required String maxPrice,
+    required int minPrice,
+    required int maxPrice,
     required int compoundId,
     required int areaId,
   }) async {

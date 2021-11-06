@@ -123,9 +123,9 @@ class _MyHomePageState extends State<MyHomePage> {
     print('ne $error}');
   });
 
-  Client()
+    Client()
       .searchClientService(
-          minPrice: "300000", maxPrice: "100000000", compoundId: 1, areaId: 1)
+          minPrice: 0, maxPrice: 400000000, compoundId: 542, areaId: 9)
       .then((value) {
     print('neee $value}');
   }).catchError((error) {
