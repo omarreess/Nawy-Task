@@ -50,7 +50,7 @@ Some of SOLID Principles applied :
    so there on unneeded Override for child classes  
 
  - S Single-Responsibility Principle as each Function for only one job
- - 
+
 Most of Functions are Pure Functions doesn't affect out of its scope (takes paramter return result)
 
 
