@@ -6,18 +6,28 @@ class FilterWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return DropdownButton(
-      underline: Container(
-        color: Colors.transparent,
-      ),
-      icon: Icon(
-        Icons.keyboard_arrow_down_rounded,
-        color: Colors.black,
-      ),
-      items: [],
-      hint: Text(
-        "Filter",
-        style: TextStyle(color: Colors.black),
+    return Container(
+      decoration: BoxDecoration(
+          color: Colors.transparent,
+          border: Border.all(color: Colors.grey),
+          borderRadius: BorderRadius.circular(10)),
+      child: DropdownButton(
+        underline: Container(
+          color: Colors.transparent,
+        ),
+        icon: Icon(
+          Icons.keyboard_arrow_down_rounded,
+          color: Colors.black,
+        ),
+        items: [],
+        hint: TextButton.icon(
+          onPressed: () {},
+          icon: Icon(Icons.filter_alt, color: Colors.indigo[900]),
+          label: Text(
+            "Filter",
+            style: TextStyle(color: Colors.black),
+          ),
+        ),
       ),
     );
   }

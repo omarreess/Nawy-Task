@@ -16,7 +16,7 @@ class SearchBarWidget extends StatelessWidget {
                   bottomLeft: Radius.circular(10),
                 ),
                 border: Border.all(color: Colors.grey)),
-            width: 200.w,
+            width: 180.w,
             child: TextField(
               decoration: InputDecoration(
                   contentPadding: EdgeInsets.only(left: 10),

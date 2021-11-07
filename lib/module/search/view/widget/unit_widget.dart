@@ -123,7 +123,7 @@ class UnitWidget extends StatelessWidget {
             Container(
               margin: EdgeInsets.only(top: 6.h),
               decoration: BoxDecoration(
-                  color: Colors.blue[800],
+                  color: Color(int.parse('#015C9A'.replaceAll('#', '0xff'))),
                   borderRadius: BorderRadius.only(
                     bottomLeft: Radius.circular(20),
                     bottomRight: Radius.circular(20),

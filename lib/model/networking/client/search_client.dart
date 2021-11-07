@@ -9,7 +9,7 @@ import 'package:nawy/model/networking/services/search_service.dart';
 /// @return response body in  List<Map<String,dynamic>> or Map<String,dynamic>
 ///
 
-class Client {
+class SearchClient {
   ///Area Client Service
   ///
   Future<List<dynamic>> areasClientService() async {

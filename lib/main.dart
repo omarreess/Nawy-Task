@@ -1,8 +1,11 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
-import 'package:nawy/model/networking/client/client.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:nawy/model/networking/client/search_client.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'module/search/view/page/search_page.dart';
+import 'module/search/view_model/search_bloc.dart';
+import 'module/search/view_model/search_state.dart';
 
 void main() {
   runApp(MyApp());
@@ -15,19 +18,25 @@ class MyApp extends StatelessWidget {
     ///Screen Utill plugin for Responsive UI across Diffrent Screens
     return ScreenUtilInit(
         designSize: Size(360, 690),
-        builder: () => MaterialApp(
-              title: 'Nawy',
-              builder: (context, widget) {
-                return MediaQuery(
-                  data: MediaQuery.of(context).copyWith(textScaleFactor: 1.0),
-                  child: widget!,
-                );
-              },
-              home: SearchPage(),
+        builder: () => MultiRepositoryProvider(
+              providers: [
+                RepositoryProvider<SearchBloc>(
+                    create: (_) => SearchBloc(LoadingSearchState())),
+              ],
+              child: MaterialApp(
+                title: 'Nawy',
+                builder: (context, widget) {
+                  return MediaQuery(
+                    data: MediaQuery.of(context).copyWith(textScaleFactor: 1.0),
+                    child: widget!,
+                  );
+                },
+                home: SearchPage(),
+              ),
             ));
   }
 }
-
+ 
  
 
 //Mocking Network

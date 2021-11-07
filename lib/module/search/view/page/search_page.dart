@@ -1,16 +1,24 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:nawy/module/search/view/widget/appbar_widget.dart';
 import 'package:nawy/module/search/view/widget/filter_widget.dart';
 import 'package:nawy/module/search/view/widget/footer_widget.dart';
 import 'package:nawy/module/search/view/widget/search_widget.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:nawy/module/search/view/widget/unit_widget.dart';
+import 'package:nawy/module/search/view_model/search_bloc.dart';
+import 'package:nawy/module/search/view_model/search_event.dart';
+import 'package:nawy/module/search/view_model/search_state.dart';
 
 class SearchPage extends StatelessWidget {
-  const SearchPage({Key? key}) : super(key: key);
+  SearchPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    //initiliaze Config Lists with initliazie event every time per rebuild
+    BlocProvider.of<SearchBloc>(context, listen: false)
+        .add(FetchInitDataEvent());
+
     return Scaffold(
       appBar: appbarWidget(),
       backgroundColor: Color(int.parse('#E5E5E5'.replaceAll('#', '0xff'))),
@@ -21,7 +29,7 @@ class SearchPage extends StatelessWidget {
           Column(
             children: [
               Container(
-                margin: EdgeInsets.only(left: 20.w),
+                margin: EdgeInsets.only(left: 5.w),
                 width: double.infinity,
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -99,7 +107,26 @@ class SearchPage extends StatelessWidget {
                 ),
               ),
 
-              UnitWidget(),
+              //List of Units (Appartments)
+              //
+              BlocBuilder<SearchBloc, SearchState>(
+                builder: (context, searchState) {
+                  return Expanded(
+                    child: ListView.separated(
+                      separatorBuilder: (context, index) =>
+                          Divider(height: 2.5.h, color: Colors.transparent),
+                      itemCount: 5,
+                      itemBuilder: (context, index) => Padding(
+                        padding: EdgeInsets.all(5),
+                        child: UnitWidget(),
+                      ),
+                    ),
+                  );
+                },
+              ),
+              SizedBox(
+                height: 150.h,
+              )
             ],
           ),
 
