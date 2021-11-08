@@ -111,6 +111,18 @@ class SearchPage extends StatelessWidget {
               //
               BlocBuilder<SearchBloc, SearchState>(
                 builder: (context, searchState) {
+                  if (searchState is LoadingSearchState) {
+                    return Center(
+                      child: CircularProgressIndicator(
+                        color: Colors.indigo[800],
+                      ),
+                    );
+                  }
+                  if (searchState is ErrorSearchState) {
+                    return Center(
+                      child: Text("Something wrong"),
+                    );
+                  }
                   return Expanded(
                     child: ListView.separated(
                       separatorBuilder: (context, index) =>
